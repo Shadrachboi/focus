@@ -1,0 +1,687 @@
+<html lang="en" class="scroll-smooth"><head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Focus international School</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+--cursor-size: 20px;
+}
+body {
+font-family: 'Manrope', sans-serif;
+background-color: #050505;
+color: #e5e5e5;
+cursor: default;
+}
+/* Noise Texture */
+.grain-overlay {
+position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+pointer-events: none;
+z-index: 9999;
+opacity: 0.04;
+background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+/* Smooth Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #dc2626; }
+/* Utilities */
+.text-glow { text-shadow: 0 0 20px rgba(255,255,255,0.3); }
+/* Animations */
+@keyframes scroll {
+0% { transform: translateX(0); }
+100% { transform: translateX(-50%); }
+}
+.animate-scroll { animation: scroll 30s linear infinite; }
+.fade-up {
+opacity: 0;
+transform: translateY(30px);
+transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-up.visible {
+opacity: 1;
+transform: translateY(0);
+}
+/* Hover lines for grid */
+.hover-border-glow {
+position: relative;
+}
+.hover-border-glow::after {
+content: '';
+position: absolute;
+inset: 0;
+border: 1px solid rgba(255, 255, 255, 0.1);
+transition: border-color 0.3s ease;
+pointer-events: none;
+}
+.hover-border-glow:hover::after {
+border-color: rgba(255, 255, 255, 0.3);
+}
+</style></head>
+<body class="antialiased selection:bg-red-900/50 selection:text-white">
+
+    <div class="grain-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-4 left-0 right-0 z-50 flex justify-center px-3 sm:px-4">
+        <div class="relative w-full md:w-auto backdrop-blur-xl bg-black/70 border border-white/15 md:border-white/10 rounded-2xl md:rounded-full px-4 py-3 md:px-6 md:py-4 flex items-center justify-between gap-3 md:gap-12 shadow-2xl shadow-black/50 transition-all duration-300 hover:border-white/20">
+            <a href="#" class="text-lg font-bold tracking-tighter uppercase text-white flex items-center gap-1">
+                FOCUS<span class="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 text-xs font-medium uppercase tracking-widest text-neutral-400">
+                <a href="#" class="hover:text-white transition-colors">Home</a>
+                <a href="#vision" class="hover:text-white transition-colors">About</a>
+                <a href="gallery.html" class="hover:text-white transition-colors">Gallery</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </div>
+
+            <button type="button" class="admission-trigger hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-white text-black hover:bg-neutral-200 transition-transform hover:scale-110" aria-label="Open admission form">
+                <span class="iconify" data-icon="lucide:arrow-up-right" data-width="16"></span>
+            </button>
+
+            <button id="mobileMenuButton" type="button" class="md:hidden flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white shadow-lg shadow-black/20" aria-label="Toggle menu" aria-expanded="false">
+                <span class="iconify" data-icon="lucide:menu" data-width="20"></span>
+            </button>
+
+            <div id="mobileMenu" class="hidden md:hidden absolute left-0 right-0 top-full mt-3 rounded-2xl border border-white/10 bg-black/90 p-4 shadow-2xl shadow-black/50 backdrop-blur-xl">
+                <div class="flex flex-col gap-3 text-sm font-medium uppercase tracking-[0.2em] text-neutral-300">
+                    <a href="#vision" class="hover:text-white transition-colors">Home</a>
+                    <a href="about.html" class="hover:text-white transition-colors">About</a>
+                    <a href="facilities.html" class="hover:text-white transition-colors">Facilities</a>
+                    <a href="gallery.html" class="hover:text-white transition-colors">Gallery</a>
+                    <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+                    <button type="button" class="admission-trigger mt-2 inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-xs font-semibold tracking-[0.2em] text-black">Join Us</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative w-full h-[110vh] overflow-hidden flex flex-col items-center justify-center">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('img/background.png');">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-black/30"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#050505_110%)]"></div>
+        </div>
+
+        <div class="relative z-20 text-center px-6 max-w-5xl mx-auto mt-20">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8 fade-up" style="transition-delay: 0.1s;">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                </span>
+                <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-300">Focus international School</span>
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-semibold tracking-tighter text-white leading-[0.9] mb-8 fade-up" style="transition-delay: 0.2s;">
+                Education That<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-neutral-500">Inspires Growth.</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-neutral-400 font-light max-w-2xl mx-auto leading-relaxed mb-10 fade-up" style="transition-delay: 0.3s;">
+                From creche to high school, nurturing every child's potential with care and excellence.
+            </p>
+
+            <div class="flex justify-center fade-up" style="transition-delay: 0.4s;">
+                <button type="button" class="admission-trigger group relative inline-flex items-center justify-center px-8 py-4 bg-white text-black text-sm font-semibold tracking-wide overflow-hidden rounded-sm transition-all hover:pr-12">
+                    <span class="relative z-10">Join Us</span>
+                    <div class="absolute inset-0 bg-neutral-200 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+                    <span class="iconify absolute right-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10" data-icon="lucide:arrow-right" data-width="12"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+            <div class="w-[1px] h-12 bg-gradient-to-b from-transparent via-white to-transparent"></div>
+        </div>
+    </header>
+
+    <!-- Infinite Marquee -->
+    <div class="w-full bg-neutral-900/30 border-y border-white/5 py-6 overflow-hidden relative z-20 backdrop-blur-sm">
+        <div class="flex whitespace-nowrap w-[200%] animate-scroll hover:[animation-play-state:paused]">
+            <div class="flex items-center gap-12 mx-6">
+                <span class="text-4xl font-bold uppercase tracking-tighter text-white/10">TRANSFORMED TO LEAD</span>
+                <span class="text-red-600 text-xl">•</span>
+                <span class="text-4xl font-bold uppercase tracking-tighter text-white/10">TRANSFORMED TO LEAD</span>
+                <span class="text-red-600 text-xl">•</span>
+                <span class="text-4xl font-bold uppercase tracking-tighter text-white/10">TRANSFORMED TO LEAD</span>
+                <span class="text-red-600 text-xl">•</span>
+                <span class="text-4xl font-bold uppercase tracking-tighter text-white/10">TRANSFORMED TO LEAD</span>
+                <span class="text-red-600 text-xl">•</span>
+                <span class="text-4xl font-bold uppercase tracking-tighter text-white/10">TRANSFORMED TO LEAD</span>
+                <span class="text-red-600 text-xl">•</span>
+            </div>
+            <div class="flex items-center gap-12 mx-6">
+                 <span class="text-4xl font-bold uppercase tracking-tighter text-white/10">TRANSFORMED TO LEAD</span>
+                <span class="text-red-600 text-xl">•</span>
+                <span class="text-4xl font-bold uppercase tracking-tighter text-white/10">TRANSFORMED TO LEAD</span>
+                <span class="text-red-600 text-xl">•</span>
+                <span class="text-4xl font-bold uppercase tracking-tighter text-white/10">TRANSFORMED TO LEAD</span>
+                <span class="text-red-600 text-xl">•</span>
+                <span class="text-4xl font-bold uppercase tracking-tighter text-white/10">TRANSFORMED TO LEAD</span>
+                <span class="text-red-600 text-xl">•</span>
+                <span class="text-4xl font-bold uppercase tracking-tighter text-white/10">TRANSFORMED TO LEAD</span>
+                <span class="text-red-600 text-xl">•</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vision Section -->
+    <section id="vision" class="py-32 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-16 items-start">
+                <div class="lg:col-span-5 fade-up lg:sticky lg:top-32">
+                    <span class="text-red-500 font-mono text-xs uppercase tracking-widest mb-4 block">01 / About</span>
+                    <h2 class="text-4xl md:text-5xl font-semibold tracking-tighter text-white mb-8 leading-[1.1]">
+                        We don't just shape minds.<br><span class="text-neutral-500">We inspire futures.</span>
+                    </h2>
+                    <p class="text-neutral-400 font-light leading-relaxed mb-8">
+                        Every lesson is a discovery. Every achievement is a step toward greatness. At Focus international School, we nurture young minds at the intersection of academic excellence, creativity, and character. Our learning experience is designed to inspire confidence, ignite curiosity, and shape future leaders long after they leave our classrooms.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8 pt-8 border-t border-white/10">
+                        <div>
+                            <span class="block text-3xl font-bold text-white mb-1">15+</span>
+                            <span class="text-xs text-neutral-500 uppercase tracking-widest">Years of Excellence</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-bold text-white mb-1">10+</span>
+                            <span class="text-xs text-neutral-500 uppercase tracking-widest">Global Awards</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-7 grid gap-6 fade-up">
+                    <div class="relative aspect-video group overflow-hidden rounded-sm border border-white/5">
+                        <img src="img/vision1.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-6 left-6">
+                            <h3 class="text-xl font-medium text-white tracking-tight"></h3>
+                        </div>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="relative aspect-[4/5] group overflow-hidden rounded-sm border border-white/5">
+                            <img src="img/vision2.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0">
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-xl font-medium text-white tracking-tight"></h3>
+                            </div>
+                        </div>
+                        <div class="relative aspect-[4/5] group overflow-hidden rounded-sm border border-white/5">
+                            <img src="img/vision3.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-xl font-medium text-white tracking-tight"></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="services" class="py-32 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="mb-16 fade-up">
+                <span class="text-red-500 font-mono text-xs uppercase tracking-widest mb-2 block">02 / Expertise</span>
+                <h2 class="text-4xl font-semibold tracking-tighter text-white">School Programs</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="group relative min-h-[440px] overflow-hidden rounded-sm border border-white/10 fade-up">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('img/nursery.png');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20"></div>
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 text-[10px] uppercase tracking-[0.2em] border border-white/20 bg-black/20 backdrop-blur-sm text-white">01</span>
+                            <span class="iconify text-white" data-icon="lucide:arrow-up-right" data-width="18"></span>
+                        </div>
+                        <h3 class="text-3xl font-semibold text-white mb-3">Nursery</h3>
+                        <p class="text-sm text-neutral-200 leading-relaxed max-w-xs">A warm, playful learning environment designed to nurture curiosity, confidence, and early growth.</p>
+                    </div>
+                </div>
+
+                <div class="group relative min-h-[440px] overflow-hidden rounded-sm border border-white/10 fade-up" style="transition-delay: 0.1s;">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('img/primary.png');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20"></div>
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 text-[10px] uppercase tracking-[0.2em] border border-white/20 bg-black/20 backdrop-blur-sm text-white">02</span>
+                            <span class="iconify text-white" data-icon="lucide:arrow-up-right" data-width="18"></span>
+                        </div>
+                        <h3 class="text-3xl font-semibold text-white mb-3">Primary</h3>
+                        <p class="text-sm text-neutral-200 leading-relaxed max-w-xs">Strong foundational learning that builds academic excellence, creativity, and discipline from the start.</p>
+                    </div>
+                </div>
+
+                <div class="group relative min-h-[440px] overflow-hidden rounded-sm border border-white/10 fade-up" style="transition-delay: 0.2s;">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('img/highschool.png');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20"></div>
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 text-[10px] uppercase tracking-[0.2em] border border-white/20 bg-black/20 backdrop-blur-sm text-white">03</span>
+                            <span class="iconify text-white" data-icon="lucide:arrow-up-right" data-width="18"></span>
+                        </div>
+                        <h3 class="text-3xl font-semibold text-white mb-3">High School</h3>
+                        <p class="text-sm text-neutral-200 leading-relaxed max-w-xs">Focused preparation for future success through ambition, leadership, and well-rounded academic growth.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BTS Section (Masonry) -->
+    <section class="py-24 bg-[#080808]">
+        <div class="max-w-7xl mx-auto px-6 mb-12 fade-up">
+            <span class="text-red-500 font-mono text-xs uppercase tracking-widest mb-2 block">03 / Behind the Scenes</span>
+            <h2 class="text-3xl font-semibold tracking-tighter text-white">On Location</h2>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 grid-rows-2 gap-4 h-[600px]">
+            <button type="button" class="gallery-trigger col-span-2 row-span-2 relative group overflow-hidden rounded-sm fade-up text-left" data-image="img/gallary.png" data-title="Set Life">
+                <img src="img/gallary.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60 group-hover:opacity-100 filter grayscale group-hover:grayscale-0">
+                <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 text-[10px] text-white uppercase tracking-widest border border-white/10">Set Life</div>
+            </button>
+            <button type="button" class="gallery-trigger col-span-1 row-span-1 relative group overflow-hidden rounded-sm fade-up text-left" style="transition-delay: 0.1s;" data-image="img/gallary(1).png" data-title="Gallery View 1">
+                 <img src="img/gallary(1).png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60 group-hover:opacity-100 filter grayscale group-hover:grayscale-0">
+            </button>
+            <button type="button" class="gallery-trigger col-span-1 row-span-2 relative group overflow-hidden rounded-sm fade-up text-left" style="transition-delay: 0.2s;" data-image="img/gallary(2).png" data-title="Gallery View 2">
+                 <img src="img/gallary(2).png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60 group-hover:opacity-100 filter grayscale group-hover:grayscale-0">
+            </button>
+            <button type="button" class="gallery-trigger col-span-1 row-span-1 relative group overflow-hidden rounded-sm fade-up text-left" style="transition-delay: 0.3s;" data-image="img/gallary(3).png" data-title="Gallery View 3">
+                 <img src="img/gallary(3).png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60 group-hover:opacity-100 filter grayscale group-hover:grayscale-0">
+            </button>
+        </div>
+
+        <div class="mt-12 text-center fade-up">
+            <a href="gallery.html" class="inline-flex items-center justify-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors uppercase tracking-widest group">
+                View Full Archive
+                <span class="iconify group-hover:translate-x-1 transition-transform" data-icon="lucide:arrow-right" data-width="16"></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-32 relative overflow-hidden bg-[#0a0a0a] border-t border-white/5">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-red-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="mb-16 fade-up">
+                <span class="text-red-500 font-mono text-xs uppercase tracking-widest mb-2 block">04 / FAQ</span>
+                <h2 class="text-4xl font-semibold tracking-tighter text-white">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4 fade-up">
+                <details open class="group border border-white/10 bg-black/20 rounded-sm overflow-hidden">
+                    <summary class="cursor-pointer list-none flex items-center justify-between gap-6 p-6 text-left text-lg font-medium text-white hover:bg-white/[0.02] transition-colors">
+                        <span>What kind of schools do you support?</span>
+                        <span class="iconify text-neutral-400 transition-transform group-open:rotate-45" data-icon="lucide:plus" data-width="18"></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-neutral-400 leading-relaxed text-sm">
+                        We support nursery, primary, and high school communities with tailored academic, creative, and developmental programs designed around each stage of learning.
+                    </div>
+                </details>
+
+                <details class="group border border-white/10 bg-black/20 rounded-sm overflow-hidden">
+                    <summary class="cursor-pointer list-none flex items-center justify-between gap-6 p-6 text-left text-lg font-medium text-white hover:bg-white/[0.02] transition-colors">
+                        <span>Do you offer extracurricular programs?</span>
+                        <span class="iconify text-neutral-400 transition-transform group-open:rotate-45" data-icon="lucide:plus" data-width="18"></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-neutral-400 leading-relaxed text-sm">
+                        Yes. We provide a range of enrichment experiences including leadership, arts, sports, creativity, and personal development initiatives to help students grow beyond the classroom.
+                    </div>
+                </details>
+
+                <details class="group border border-white/10 bg-black/20 rounded-sm overflow-hidden">
+                    <summary class="cursor-pointer list-none flex items-center justify-between gap-6 p-6 text-left text-lg font-medium text-white hover:bg-white/[0.02] transition-colors">
+                        <span>How do you structure learning for each level?</span>
+                        <span class="iconify text-neutral-400 transition-transform group-open:rotate-45" data-icon="lucide:plus" data-width="18"></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-neutral-400 leading-relaxed text-sm">
+                        Each level is developed around age-appropriate learning goals, classroom culture, and developmental needs so every student receives the right balance of challenge and support.
+                    </div>
+                </details>
+
+                <details class="group border border-white/10 bg-black/20 rounded-sm overflow-hidden">
+                    <summary class="cursor-pointer list-none flex items-center justify-between gap-6 p-6 text-left text-lg font-medium text-white hover:bg-white/[0.02] transition-colors">
+                        <span>Can parents visit the school before enrollment?</span>
+                        <span class="iconify text-neutral-400 transition-transform group-open:rotate-45" data-icon="lucide:plus" data-width="18"></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-neutral-400 leading-relaxed text-sm">
+                        Absolutely. We welcome families to schedule a school visit, meet the team, and explore the environment before making their final decision.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 relative bg-neutral-950 border-t border-white/5 overflow-hidden">
+        
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 relative z-10">
+            <div class="fade-up">
+                <span class="text-red-500 font-mono text-xs uppercase tracking-widest mb-2 block">05 / Contact</span>
+                <h2 class="text-6xl md:text-7xl font-semibold tracking-tighter text-white mb-8">
+                    Let's make <br>
+                    <span class="text-neutral-600">history.</span>
+                </h2>
+                <p class="text-neutral-400 text-lg font-light mb-12 max-w-md">
+                    We are currently accepting new projects for Q4 2023. Reach out to discuss your vision.
+                </p>
+
+                <div class="space-y-8">
+                    <a href="mailto:hello@kabovelo.com" class="group flex items-center gap-6 text-white hover:text-red-500 transition-colors">
+                        <div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-red-500 transition-colors">
+                            <span class="iconify" data-icon="lucide:mail" data-width="20"></span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-neutral-500 uppercase tracking-widest mb-1">Email Us</span>
+                            <span class="text-xl font-medium">hello@focusinternationalschool.com</span>
+                        </div>
+                    </a>
+                    <div class="group flex items-center gap-6 text-white hover:text-red-500 transition-colors">
+                        <div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-red-500 transition-colors">
+                            <span class="iconify" data-icon="lucide:phone" data-width="20"></span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-neutral-500 uppercase tracking-widest mb-1">Call Us</span>
+                            <a href="tel:+2348025887297" class="block text-base font-medium text-white hover:text-red-500 transition-colors">+2349038892386</a>
+                            <a href="tel:+2348150749030" class="mt-1 block text-base font-medium text-white hover:text-red-500 transition-colors">+2349038892386</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-neutral-900/30 p-10 border border-white/10 rounded-sm backdrop-blur-sm fade-up" style="transition-delay: 0.2s;">
+                <form class="space-y-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="group relative">
+                            <input type="text" id="name" class="peer w-full bg-transparent border-b border-neutral-700 py-3 text-white focus:outline-none focus:border-red-500 transition-colors placeholder-transparent" placeholder="Name">
+                            <label for="name" class="absolute left-0 -top-3.5 text-xs text-neutral-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-red-500">Name</label>
+                        </div>
+                        <div class="group relative">
+                            <input type="email" id="email" class="peer w-full bg-transparent border-b border-neutral-700 py-3 text-white focus:outline-none focus:border-red-500 transition-colors placeholder-transparent" placeholder="Email">
+                            <label for="email" class="absolute left-0 -top-3.5 text-xs text-neutral-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-red-500">Email</label>
+                        </div>
+                    </div>
+                    
+                   
+
+                    <div class="group relative">
+                        <textarea id="message" rows="4" class="peer w-full bg-transparent border-b border-neutral-700 py-3 text-white focus:outline-none focus:border-red-500 transition-colors placeholder-transparent resize-none" placeholder="Message"></textarea>
+                        <label for="message" class="absolute left-0 -top-3.5 text-xs text-neutral-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-red-500">Message</label>
+                    </div>
+
+                    <button class="w-full py-5 bg-white text-black font-semibold uppercase tracking-widest hover:bg-neutral-200 transition-all flex items-center justify-center gap-3 group">
+                        Send Inquiry
+                        <span class="iconify group-hover:translate-x-1 transition-transform" data-icon="lucide:arrow-right" data-width="18"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <a href="#" class="text-xl font-bold tracking-tighter uppercase text-white flex items-center gap-1">
+                Focus international School<span class="text-red-600">.</span>
+            </a>
+            <p class="text-neutral-600 text-xs">© 2026 Focus international School. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Admission Form Modal -->
+    <div id="admissionModal" class="fixed inset-0 z-[70] hidden items-center justify-center bg-black/80 backdrop-blur-sm px-4">
+        <div class="relative w-full max-w-2xl rounded-sm border border-white/10 bg-[#111111] p-6 md:p-8 shadow-2xl shadow-black/50">
+            <button type="button" class="close-admission absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-white/30 hover:bg-white/10" aria-label="Close admission form">
+                <span class="iconify" data-icon="lucide:x" data-width="18"></span>
+            </button>
+
+            <div class="mb-8">
+                <span class="text-red-500 font-mono text-xs uppercase tracking-widest mb-2 block">Admission Form</span>
+                <h3 class="text-3xl font-semibold tracking-tighter text-white">Apply for a place</h3>
+            </div>
+
+            <form id="admissionForm" class="space-y-6">
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="group relative">
+                        <label for="surname" class="mb-2 block text-xs uppercase tracking-[0.2em] text-neutral-400">Surname</label>
+                        <input type="text" id="surname" name="surname" required class="w-full rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-red-500 focus:outline-none" placeholder="Surname">
+                    </div>
+                    <div class="group relative">
+                        <label for="firstname" class="mb-2 block text-xs uppercase tracking-[0.2em] text-neutral-400">First name</label>
+                        <input type="text" id="firstname" name="firstname" required class="w-full rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-red-500 focus:outline-none" placeholder="First name">
+                    </div>
+                    <div class="group relative">
+                        <label for="lastname" class="mb-2 block text-xs uppercase tracking-[0.2em] text-neutral-400">Last name</label>
+                        <input type="text" id="lastname" name="lastname" required class="w-full rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-red-500 focus:outline-none" placeholder="Last name">
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="program" class="mb-2 block text-xs uppercase tracking-[0.2em] text-neutral-400">School level</label>
+                        <div class="relative">
+                            <select id="program" name="program" required class="w-full appearance-none rounded-sm border border-white/10 bg-white/5 px-4 py-3 pr-10 text-white focus:border-red-500 focus:outline-none" style="-webkit-appearance: none; appearance: none;">
+                                <option value="" class="bg-[#111111] text-neutral-300">Select a program</option>
+                                <option value="Nursery" class="bg-[#111111] text-white">Nursery</option>
+                                <option value="Primary" class="bg-[#111111] text-white">Primary</option>
+                                <option value="High School" class="bg-[#111111] text-white">High School</option>
+                            </select>
+                            <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-neutral-300">
+                                <span class="iconify" data-icon="lucide:chevron-down" data-width="18"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="phone" class="mb-2 block text-xs uppercase tracking-[0.2em] text-neutral-400">Phone number</label>
+                        <input type="tel" id="phone" name="phone" required class="w-full rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-red-500 focus:outline-none" placeholder="Phone number">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="additionalNote" class="mb-2 block text-xs uppercase tracking-[0.2em] text-neutral-400">Additional note</label>
+                    <textarea id="additionalNote" name="additionalNote" rows="5" class="w-full rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-red-500 focus:outline-none" placeholder="Tell us more about your child and the program you are interested in..."></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-white py-4 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:bg-neutral-200">
+                    Submit Application
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Gallery Lightbox Modal -->
+    <div id="galleryModal" class="fixed inset-0 z-[80] hidden items-center justify-center bg-black/90 backdrop-blur-sm px-4">
+        <div class="relative w-full max-w-4xl rounded-sm border border-white/10 bg-[#111111] p-3 shadow-2xl shadow-black/50">
+            <button type="button" class="close-gallery absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white transition hover:border-white/30 hover:bg-black/60" aria-label="Close gallery image">
+                <span class="iconify" data-icon="lucide:x" data-width="18"></span>
+            </button>
+            <img id="galleryImage" src="" alt="Gallery full view" class="max-h-[80vh] w-full object-contain rounded-sm">
+            <div class="mt-4 flex items-center justify-between gap-3 px-2 pb-2">
+                <p id="galleryTitle" class="text-sm uppercase tracking-[0.2em] text-neutral-300">Gallery Image</p>
+                <div class="flex items-center gap-2">
+                    <button type="button" id="prevGalleryImage" class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white transition hover:border-white/30 hover:bg-black/60" aria-label="Previous image">
+                        <span class="iconify" data-icon="lucide:arrow-left" data-width="18"></span>
+                    </button>
+                    <button type="button" id="nextGalleryImage" class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white transition hover:border-white/30 hover:bg-black/60" aria-label="Next image">
+                        <span class="iconify" data-icon="lucide:arrow-right" data-width="18"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Simple Scroll Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-up');
+            fadeElements.forEach(el => observer.observe(el));
+
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuLinks = document.querySelectorAll('#mobileMenu a, #mobileMenu button');
+
+            const toggleMobileMenu = () => {
+                const isOpen = !mobileMenu.classList.contains('hidden');
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', String(!isOpen));
+                mobileMenuButton.innerHTML = isOpen
+                    ? '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="7" y2="7"></line><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="17" y2="17"></line></svg>'
+                    : '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg>';
+            };
+
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        mobileMenuButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="7" y2="7"></line><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="17" y2="17"></line></svg>';
+                    }
+                });
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    mobileMenuButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="7" y2="7"></line><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="17" y2="17"></line></svg>';
+                }
+            });
+
+            const modal = document.getElementById('admissionModal');
+            const triggerButtons = document.querySelectorAll('.admission-trigger');
+            const closeButton = document.querySelector('.close-admission');
+            const form = document.getElementById('admissionForm');
+
+            const openModal = () => {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.classList.add('overflow-hidden');
+            };
+
+            const closeModal = () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.classList.remove('overflow-hidden');
+            };
+
+            triggerButtons.forEach(button => {
+                button.addEventListener('click', openModal);
+            });
+
+            closeButton.addEventListener('click', closeModal);
+
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                alert('Your admission request has been received. Our team will contact you shortly.');
+                form.reset();
+                closeModal();
+            });
+
+            const galleryModal = document.getElementById('galleryModal');
+            const galleryImage = document.getElementById('galleryImage');
+            const galleryTitle = document.getElementById('galleryTitle');
+            const galleryTriggers = Array.from(document.querySelectorAll('.gallery-trigger'));
+            const closeGallery = document.querySelector('.close-gallery');
+            const prevGalleryImage = document.getElementById('prevGalleryImage');
+            const nextGalleryImage = document.getElementById('nextGalleryImage');
+            let currentGalleryIndex = 0;
+
+            const showGalleryImage = (index) => {
+                currentGalleryIndex = (index + galleryTriggers.length) % galleryTriggers.length;
+                const trigger = galleryTriggers[currentGalleryIndex];
+                const imageSrc = trigger.dataset.image;
+                const title = trigger.dataset.title || 'Gallery Image';
+                galleryImage.src = imageSrc;
+                galleryTitle.textContent = title;
+            };
+
+            galleryTriggers.forEach((trigger, index) => {
+                trigger.addEventListener('click', () => {
+                    currentGalleryIndex = index;
+                    showGalleryImage(index);
+                    galleryModal.classList.remove('hidden');
+                    galleryModal.classList.add('flex');
+                    document.body.classList.add('overflow-hidden');
+                });
+            });
+
+            prevGalleryImage.addEventListener('click', () => {
+                showGalleryImage(currentGalleryIndex - 1);
+            });
+
+            nextGalleryImage.addEventListener('click', () => {
+                showGalleryImage(currentGalleryIndex + 1);
+            });
+
+            closeGallery.addEventListener('click', () => {
+                galleryModal.classList.add('hidden');
+                galleryModal.classList.remove('flex');
+                document.body.classList.remove('overflow-hidden');
+            });
+
+            galleryModal.addEventListener('click', (event) => {
+                if (event.target === galleryModal) {
+                    galleryModal.classList.add('hidden');
+                    galleryModal.classList.remove('flex');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !galleryModal.classList.contains('hidden')) {
+                    galleryModal.classList.add('hidden');
+                    galleryModal.classList.remove('flex');
+                    document.body.classList.remove('overflow-hidden');
+                }
+
+                if (event.key === 'ArrowLeft' && !galleryModal.classList.contains('hidden')) {
+                    showGalleryImage(currentGalleryIndex - 1);
+                }
+
+                if (event.key === 'ArrowRight' && !galleryModal.classList.contains('hidden')) {
+                    showGalleryImage(currentGalleryIndex + 1);
+                }
+            });
+        });
+    </script>
+
+</body></html>

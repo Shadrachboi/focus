@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus international School | Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --cursor-size: 20px;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #050505;
+            color: #e5e5e5;
+            cursor: default;
+        }
+
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #dc2626;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-red-900/50 selection:text-white">
+    <div class="grain-overlay"></div>
+
+    <nav class="fixed top-4 left-0 right-0 z-50 flex justify-center px-3 sm:px-4">
+        <div class="relative w-full md:w-auto backdrop-blur-xl bg-black/70 border border-white/15 md:border-white/10 rounded-2xl md:rounded-full px-4 py-3 md:px-6 md:py-4 flex items-center justify-between gap-3 md:gap-12 shadow-2xl shadow-black/50 transition-all duration-300 hover:border-white/20">
+            <a href="index.html" class="text-lg font-bold tracking-tighter uppercase text-white flex items-center gap-1">
+                FOCUS<span class="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 text-xs font-medium uppercase tracking-widest text-neutral-400">
+                <a href="index.html" class="hover:text-white transition-colors">Home</a>
+                <a href="index.html#vision" class="hover:text-white transition-colors">About</a>
+                <a href="gallery.html" class="hover:text-white transition-colors">Gallery</a>
+                <a href="index.html#contact" class="hover:text-white transition-colors">Contact</a>
+            </div>
+
+            <button type="button" class="admission-trigger hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-white text-black hover:bg-neutral-200 transition-transform hover:scale-110" aria-label="Open admission form">
+                <span class="iconify" data-icon="lucide:arrow-up-right" data-width="16"></span>
+            </button>
+
+            <button id="mobileMenuButton" type="button" class="md:hidden flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white shadow-lg shadow-black/20" aria-label="Toggle menu" aria-expanded="false">
+                <span class="iconify" data-icon="lucide:menu" data-width="20"></span>
+            </button>
+
+            <div id="mobileMenu" class="hidden md:hidden absolute left-0 right-0 top-full mt-3 rounded-2xl border border-white/10 bg-black/90 p-4 shadow-2xl shadow-black/50 backdrop-blur-xl">
+                <div class="flex flex-col gap-3 text-sm font-medium uppercase tracking-[0.2em] text-neutral-300">
+                    <a href="index.html" class="hover:text-white transition-colors">Home</a>
+                    <a href="about.html" class="hover:text-white transition-colors">About</a>
+                    <a href="facilities.html" class="hover:text-white transition-colors">Facilities</a>
+                    <a href="gallery.html" class="hover:text-white transition-colors">Gallery</a>
+                    <a href="index.html#contact" class="hover:text-white transition-colors">Contact</a>
+                    <button type="button" class="admission-trigger mt-2 inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-xs font-semibold tracking-[0.2em] text-black">Join Us</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-28 pb-20">
+        <section class="max-w-7xl mx-auto px-6">
+            <div class="mb-10 fade-up">
+                <h1 class="text-4xl md:text-6xl font-semibold tracking-tighter text-white">Gallery</h1>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 fade-up">
+                <button type="button" class="gallery-trigger group overflow-hidden rounded-sm border border-white/10 bg-black/20 text-left" data-image="img/background.png" data-title="Background">
+                    <img src="img/background.png" alt="Background" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+                </button>
+                <button type="button" class="gallery-trigger group overflow-hidden rounded-sm border border-white/10 bg-black/20 text-left" data-image="img/vision1.png" data-title="Vision 1">
+                    <img src="img/vision1.png" alt="Vision 1" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+                </button>
+                <button type="button" class="gallery-trigger group overflow-hidden rounded-sm border border-white/10 bg-black/20 text-left" data-image="img/vision2.png" data-title="Vision 2">
+                    <img src="img/vision2.png" alt="Vision 2" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+                </button>
+                <button type="button" class="gallery-trigger group overflow-hidden rounded-sm border border-white/10 bg-black/20 text-left" data-image="img/vision3.png" data-title="Vision 3">
+                    <img src="img/vision3.png" alt="Vision 3" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+                </button>
+                <button type="button" class="gallery-trigger group overflow-hidden rounded-sm border border-white/10 bg-black/20 text-left" data-image="img/nursery.png" data-title="Nursery">
+                    <img src="img/nursery.png" alt="Nursery" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+                </button>
+                <button type="button" class="gallery-trigger group overflow-hidden rounded-sm border border-white/10 bg-black/20 text-left" data-image="img/primary.png" data-title="Primary">
+                    <img src="img/primary.png" alt="Primary" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+                </button>
+                <button type="button" class="gallery-trigger group overflow-hidden rounded-sm border border-white/10 bg-black/20 text-left" data-image="img/highschool.png" data-title="High school">
+                    <img src="img/highschool.png" alt="High school" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+                </button>
+                <button type="button" class="gallery-trigger group overflow-hidden rounded-sm border border-white/10 bg-black/20 text-left" data-image="img/gallary.png" data-title="Gallery main">
+                    <img src="img/gallary.png" alt="Gallery main" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+                </button>
+                <button type="button" class="gallery-trigger group overflow-hidden rounded-sm border border-white/10 bg-black/20 text-left" data-image="img/gallary(1).png" data-title="Gallery image 1">
+                    <img src="img/gallary(1).png" alt="Gallery image 1" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+                </button>
+                <button type="button" class="gallery-trigger group overflow-hidden rounded-sm border border-white/10 bg-black/20 text-left" data-image="img/gallary(2).png" data-title="Gallery image 2">
+                    <img src="img/gallary(2).png" alt="Gallery image 2" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+                </button>
+                <button type="button" class="gallery-trigger group overflow-hidden rounded-sm border border-white/10 bg-black/20 text-left" data-image="img/gallary(3).png" data-title="Gallery image 3">
+                    <img src="img/gallary(3).png" alt="Gallery image 3" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+                </button>
+                <button type="button" class="gallery-trigger group overflow-hidden rounded-sm border border-white/10 bg-black/20 text-left" data-image="img/basketballcourt.png" data-title="Basketball court">
+                    <img src="img/basketballcourt.png" alt="Basketball court" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+                </button>
+                <button type="button" class="gallery-trigger group overflow-hidden rounded-sm border border-white/10 bg-black/20 text-left" data-image="img/computerroom.png" data-title="Computer room">
+                    <img src="img/computerroom.png" alt="Computer room" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+                </button>
+                <button type="button" class="gallery-trigger group overflow-hidden rounded-sm border border-white/10 bg-black/20 text-left" data-image="img/field.png" data-title="Field">
+                    <img src="img/field.png" alt="Field" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+                </button>
+                <button type="button" class="gallery-trigger group overflow-hidden rounded-sm border border-white/10 bg-black/20 text-left" data-image="img/library.png" data-title="Library">
+                    <img src="img/library.png" alt="Library" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+                </button>
+                <button type="button" class="gallery-trigger group overflow-hidden rounded-sm border border-white/10 bg-black/20 text-left" data-image="img/whatsapp-image-2026-04-05-at-5.05.51-am-2-LM1DT9LRhkw3Lpzz.png" data-title="Campus moment">
+                    <img src="img/whatsapp-image-2026-04-05-at-5.05.51-am-2-LM1DT9LRhkw3Lpzz.png" alt="Campus moment" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <div id="galleryModal" class="fixed inset-0 z-[80] hidden items-center justify-center bg-black/90 backdrop-blur-sm px-4">
+        <div class="relative w-full max-w-4xl rounded-sm border border-white/10 bg-[#111111] p-3 shadow-2xl shadow-black/50">
+            <button type="button" class="close-gallery absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white transition hover:border-white/30 hover:bg-black/60" aria-label="Close gallery image">
+                <span class="iconify" data-icon="lucide:x" data-width="18"></span>
+            </button>
+            <img id="galleryImage" src="" alt="Gallery full view" class="max-h-[80vh] w-full object-contain rounded-sm">
+            <div class="mt-4 flex items-center justify-between gap-3 px-2 pb-2">
+                <p id="galleryTitle" class="text-sm uppercase tracking-[0.2em] text-neutral-300">Gallery Image</p>
+                <div class="flex items-center gap-2">
+                    <button type="button" id="prevGalleryImage" class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white transition hover:border-white/30 hover:bg-black/60" aria-label="Previous image">
+                        <span class="iconify" data-icon="lucide:arrow-left" data-width="18"></span>
+                    </button>
+                    <button type="button" id="nextGalleryImage" class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white transition hover:border-white/30 hover:bg-black/60" aria-label="Next image">
+                        <span class="iconify" data-icon="lucide:arrow-right" data-width="18"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-black py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <a href="index.html" class="text-xl font-bold tracking-tighter uppercase text-white flex items-center gap-1">
+                Focus international School<span class="text-red-600">.</span>
+            </a>
+            <p class="text-neutral-600 text-xs">© 2026 Focus international School. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="admissionModal" class="fixed inset-0 z-[70] hidden items-center justify-center bg-black/80 backdrop-blur-sm px-4">
+        <div class="relative w-full max-w-2xl rounded-sm border border-white/10 bg-[#111111] p-6 md:p-8 shadow-2xl shadow-black/50">
+            <button type="button" class="close-admission absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-white/30 hover:bg-white/10" aria-label="Close admission form">
+                <span class="iconify" data-icon="lucide:x" data-width="18"></span>
+            </button>
+
+            <div class="mb-8">
+                <span class="text-red-500 font-mono text-xs uppercase tracking-widest mb-2 block">Admission Form</span>
+                <h3 class="text-3xl font-semibold tracking-tighter text-white">Apply for a place</h3>
+            </div>
+
+            <form id="admissionForm" class="space-y-6">
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="group relative">
+                        <label for="surname" class="mb-2 block text-xs uppercase tracking-[0.2em] text-neutral-400">Surname</label>
+                        <input type="text" id="surname" name="surname" required class="w-full rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-red-500 focus:outline-none" placeholder="Surname">
+                    </div>
+                    <div class="group relative">
+                        <label for="firstname" class="mb-2 block text-xs uppercase tracking-[0.2em] text-neutral-400">First name</label>
+                        <input type="text" id="firstname" name="firstname" required class="w-full rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-red-500 focus:outline-none" placeholder="First name">
+                    </div>
+                    <div class="group relative">
+                        <label for="lastname" class="mb-2 block text-xs uppercase tracking-[0.2em] text-neutral-400">Last name</label>
+                        <input type="text" id="lastname" name="lastname" required class="w-full rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-red-500 focus:outline-none" placeholder="Last name">
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="program" class="mb-2 block text-xs uppercase tracking-[0.2em] text-neutral-400">School level</label>
+                        <div class="relative">
+                            <select id="program" name="program" required class="w-full appearance-none rounded-sm border border-white/10 bg-white/5 px-4 py-3 pr-10 text-white focus:border-red-500 focus:outline-none" style="-webkit-appearance: none; appearance: none;">
+                                <option value="" class="bg-[#111111] text-neutral-300">Select a program</option>
+                                <option value="Nursery" class="bg-[#111111] text-white">Nursery</option>
+                                <option value="Primary" class="bg-[#111111] text-white">Primary</option>
+                                <option value="High School" class="bg-[#111111] text-white">High School</option>
+                            </select>
+                            <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-neutral-300">
+                                <span class="iconify" data-icon="lucide:chevron-down" data-width="18"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="phone" class="mb-2 block text-xs uppercase tracking-[0.2em] text-neutral-400">Phone number</label>
+                        <input type="tel" id="phone" name="phone" required class="w-full rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-red-500 focus:outline-none" placeholder="Phone number">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="additionalNote" class="mb-2 block text-xs uppercase tracking-[0.2em] text-neutral-400">Additional note</label>
+                    <textarea id="additionalNote" name="additionalNote" rows="5" class="w-full rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-red-500 focus:outline-none" placeholder="Tell us more about your child and the program you are interested in..."></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-white py-4 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:bg-neutral-200">
+                    Submit Application
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { root: null, rootMargin: '0px', threshold: 0.1 });
+
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuLinks = document.querySelectorAll('#mobileMenu a, #mobileMenu button');
+
+            const setMenuIcon = (isOpen) => {
+                mobileMenuButton.innerHTML = isOpen
+                    ? '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg>'
+                    : '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="7" y2="7"></line><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="17" y2="17"></line></svg>';
+            };
+
+            const toggleMobileMenu = () => {
+                const isOpen = !mobileMenu.classList.contains('hidden');
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', String(!isOpen));
+                setMenuIcon(isOpen);
+            };
+
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        setMenuIcon(false);
+                    }
+                });
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    setMenuIcon(false);
+                }
+            });
+
+            const modal = document.getElementById('admissionModal');
+            const triggerButtons = document.querySelectorAll('.admission-trigger');
+            const closeButton = document.querySelector('.close-admission');
+            const form = document.getElementById('admissionForm');
+
+            const openModal = () => {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.classList.add('overflow-hidden');
+            };
+
+            const closeModal = () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.classList.remove('overflow-hidden');
+            };
+
+            triggerButtons.forEach(button => {
+                button.addEventListener('click', openModal);
+            });
+
+            closeButton.addEventListener('click', closeModal);
+
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                alert('Your admission request has been received. Our team will contact you shortly.');
+                form.reset();
+                closeModal();
+            });
+
+            const galleryModal = document.getElementById('galleryModal');
+            const galleryImage = document.getElementById('galleryImage');
+            const galleryTitle = document.getElementById('galleryTitle');
+            const galleryTriggers = Array.from(document.querySelectorAll('.gallery-trigger'));
+            const closeGallery = document.querySelector('.close-gallery');
+            const prevGalleryImage = document.getElementById('prevGalleryImage');
+            const nextGalleryImage = document.getElementById('nextGalleryImage');
+            let currentGalleryIndex = 0;
+
+            const showGalleryImage = (index) => {
+                currentGalleryIndex = (index + galleryTriggers.length) % galleryTriggers.length;
+                const trigger = galleryTriggers[currentGalleryIndex];
+                const imageSrc = trigger.dataset.image;
+                const title = trigger.dataset.title || 'Gallery Image';
+                galleryImage.src = imageSrc;
+                galleryTitle.textContent = title;
+            };
+
+            galleryTriggers.forEach((trigger, index) => {
+                trigger.addEventListener('click', () => {
+                    currentGalleryIndex = index;
+                    showGalleryImage(index);
+                    galleryModal.classList.remove('hidden');
+                    galleryModal.classList.add('flex');
+                    document.body.classList.add('overflow-hidden');
+                });
+            });
+
+            prevGalleryImage.addEventListener('click', () => {
+                showGalleryImage(currentGalleryIndex - 1);
+            });
+
+            nextGalleryImage.addEventListener('click', () => {
+                showGalleryImage(currentGalleryIndex + 1);
+            });
+
+            closeGallery.addEventListener('click', () => {
+                galleryModal.classList.add('hidden');
+                galleryModal.classList.remove('flex');
+                document.body.classList.remove('overflow-hidden');
+            });
+
+            galleryModal.addEventListener('click', (event) => {
+                if (event.target === galleryModal) {
+                    galleryModal.classList.add('hidden');
+                    galleryModal.classList.remove('flex');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !galleryModal.classList.contains('hidden')) {
+                    galleryModal.classList.add('hidden');
+                    galleryModal.classList.remove('flex');
+                    document.body.classList.remove('overflow-hidden');
+                }
+
+                if (event.key === 'ArrowLeft' && !galleryModal.classList.contains('hidden')) {
+                    showGalleryImage(currentGalleryIndex - 1);
+                }
+
+                if (event.key === 'ArrowRight' && !galleryModal.classList.contains('hidden')) {
+                    showGalleryImage(currentGalleryIndex + 1);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
